@@ -1,8 +1,10 @@
 ﻿@page "/employee"
 
-@using EmployeeSystem.Model
+@using EmployeeSystem.Model.EmployeeSystem.Model;
 @using EmployeeSystem.Data
 @inject AppDbContext DbContext
+@inject EmployeeSystem.Controllers.EmployeeController employeeController
+@rendermode InteractiveServer
 
 <div class="container mt-5">
     <div class="card">
@@ -10,7 +12,7 @@
             <h2>Add Employee</h2>
         </div>
         <div class="card-body">
-            <EditForm Model="@employee" OnValidSubmit="HandleValidSubmit">
+            <EditForm Model="@employee" OnValidSubmit="HandleValidSubmit" FormName="addEmployeeForm">
                 <DataAnnotationsValidator />
                 <ValidationSummary class="text-danger" />
 
@@ -27,7 +29,7 @@
                     <InputNumber id="salary" class="form-control" @bind-Value="employee.Salary" />
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-3">Add Employee</button>
+                <button type="submit" class="btn btn-primary">Add Employee</button>
             </EditForm>
         </div>
     </div>
@@ -38,8 +40,15 @@
 
     private async Task HandleValidSubmit()
     {
-        DbContext.Employees.Add(employee);
-        await DbContext.SaveChangesAsync();
-        employee = new Employee(); // Reset the form
+        try
+        {
+            await employeeController.AddEmployeeAsync(employee);
+            
+            employee = new Employee(); // Clear form
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }
