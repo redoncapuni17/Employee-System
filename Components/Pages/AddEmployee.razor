@@ -1,0 +1,45 @@
+﻿@page "/employee"
+
+@using EmployeeSystem.Model
+@using EmployeeSystem.Data
+@inject AppDbContext DbContext
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Add Employee</h2>
+        </div>
+        <div class="card-body">
+            <EditForm Model="@employee" OnValidSubmit="HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="text-danger" />
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <InputText id="name" class="form-control" @bind-Value="employee.Name" />
+                </div>
+                <div class="form-group">
+                    <label for="position">Position</label>
+                    <InputText id="position" class="form-control" @bind-Value="employee.Position" />
+                </div>
+                <div class="form-group">
+                    <label for="salary">Salary</label>
+                    <InputNumber id="salary" class="form-control" @bind-Value="employee.Salary" />
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Add Employee</button>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Employee employee = new Employee();
+
+    private async Task HandleValidSubmit()
+    {
+        DbContext.Employees.Add(employee);
+        await DbContext.SaveChangesAsync();
+        employee = new Employee(); // Reset the form
+    }
+}

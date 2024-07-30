@@ -1,6 +1,6 @@
-﻿using EmployeeSystem.Model.EmployeeSystem.Model;
+﻿
+using EmployeeSystem.Model;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace EmployeeSystem.Data
 {
