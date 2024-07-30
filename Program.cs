@@ -1,10 +1,12 @@
 using EmployeeSystem.Components;
+using EmployeeSystem.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddSingleton<AppDbContext>();
 
 var app = builder.Build();
 

@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\EmployeeSystem.bundle.scp.css",
+      "PackagePath": "staticwebassets\\EmployeeSystem.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EmployeeSystem.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.EmployeeSystem.props",
+      "PackagePath": "build\\EmployeeSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.EmployeeSystem.props",
+      "PackagePath": "buildMultiTargeting\\EmployeeSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.EmployeeSystem.props",
+      "PackagePath": "buildTransitive\\EmployeeSystem.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
