@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\EmployeeSystem.csproj": {}
+    "C:\\Users\\NB\\Desktop\\EMS\\Employee-System\\EmployeeSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\EmployeeSystem.csproj": {
+    "C:\\Users\\NB\\Desktop\\EMS\\Employee-System\\EmployeeSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\EmployeeSystem.csproj",
+        "projectUniqueName": "C:\\Users\\NB\\Desktop\\EMS\\Employee-System\\EmployeeSystem.csproj",
         "projectName": "EmployeeSystem",
-        "projectPath": "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\EmployeeSystem.csproj",
-        "packagesPath": "C:\\Users\\redon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\redon\\OneDrive\\Desktop\\EMS\\EmployeeSystem\\EmployeeSystem\\obj\\",
+        "projectPath": "C:\\Users\\NB\\Desktop\\EMS\\Employee-System\\EmployeeSystem.csproj",
+        "packagesPath": "C:\\Users\\NB\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NB\\Desktop\\EMS\\Employee-System\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\redon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NB\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
