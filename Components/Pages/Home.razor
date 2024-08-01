@@ -1,4 +1,9 @@
 ﻿@page "/"
+
+@using EmployeeSystem.Model.EmployeeSystem.Model;
+@using EmployeeSystem.Controllers;
+@inject NavigationManager Navigation
+@inject EmployeeController employeeController;
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
@@ -11,7 +16,7 @@
             <div class="card-body">
                 <h4 class="card-title">All Employee</h4>
                 <div class="d-flex justify-content-between align-items-center">
-                    <p class="card-text mb-0" style="font-size: 2rem; font-weight: bold;">0</p>
+                    <p class="card-text mb-0" style="font-size: 2rem; font-weight: bold;">@employees.Count</p>
                 </div>
             </div>
         </div>
@@ -22,7 +27,7 @@
             <div class="card-body">
                 <h4 class="card-title">Salary</h4>
                 <div class="d-flex justify-content-between align-items-center">
-                    <p class="card-text mb-0" style="font-size: 2rem; font-weight: bold;">0 $</p>
+                    <p class="card-text mb-0" style="font-size: 2rem; font-weight: bold;">@TotalSalary $</p>
                 </div>
             </div>
         </div>
@@ -38,7 +43,6 @@
     </div>
 </div>
 
-
 <style>
     .custom-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -50,7 +54,6 @@
         }
 </style>
 
-
 <hr />
 <h2>Employee Details</h2>
 
@@ -61,21 +64,44 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Salary</th>
                 <th>Position</th>
+                <th>Salary</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-          
+            @foreach (var employee in employees)
+            {
+                <tr>
+                    <td>@employee.Name</td>
+                    <td>@employee.Position</td>
+                    <td>@employee.Salary</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" @onclick="() => NavigateToEdit(employee.Id)">Edit</button>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
 
+@code {
+    private List<Employee> employees = new List<Employee>();
+    private decimal TotalSalary => employees.Sum(e => e.Salary);
 
-@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadEmployees();
+    }
 
-  
+    private async Task LoadEmployees()
+    {
+        employees = await employeeController.GetEmployees();
+        StateHasChanged();
+    }
 
-
+    private void NavigateToEdit(int employeeId)
+    {
+        Navigation.NavigateTo($"/employee/{employeeId}");
+    }
 }

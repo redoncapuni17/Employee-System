@@ -1,4 +1,4 @@
-﻿@page "/employee"
+﻿@page "/employee/{employeeId:int?}"
 
 @using EmployeeSystem.Model.EmployeeSystem.Model;
 @using EmployeeSystem.Data
@@ -9,46 +9,101 @@
 <div class="container mt-5">
     <div class="card">
         <div class="card-header">
-            <h2>Add Employee</h2>
+            <h2>@(employeeId.HasValue ? "Edit Employee" : "Add Employee")</h2>
         </div>
         <div class="card-body">
-            <EditForm Model="@employee" OnValidSubmit="HandleValidSubmit" FormName="addEmployeeForm">
+            <EditForm Model="@employee" OnValidSubmit="HandleValidSubmit">
                 <DataAnnotationsValidator />
-                <ValidationSummary class="text-danger" />
+              
 
                 <div class="form-group">
                     <label for="name">Name</label>
                     <InputText id="name" class="form-control" @bind-Value="employee.Name" />
+                    <ValidationMessage For="@(() => employee.Name)" />
                 </div>
                 <div class="form-group">
                     <label for="position">Position</label>
                     <InputText id="position" class="form-control" @bind-Value="employee.Position" />
+                    <ValidationMessage For="@(() => employee.Position)" />
                 </div>
                 <div class="form-group">
                     <label for="salary">Salary</label>
                     <InputNumber id="salary" class="form-control" @bind-Value="employee.Salary" />
+                    <ValidationMessage For="@(() => employee.Salary)" />
                 </div>
 
-                <button type="submit" class="btn btn-primary">Add Employee</button>
+                <button type="submit" class="btn btn-primary mt-3 mb-3">@(employeeId.HasValue ? "Update Employee" : "Add Employee")</button>
+
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @errorMessage
+                    </div>
+                }
+                @if (showSuccessMessage)
+                {
+                    <div class="alert alert-success" role="alert">
+                        Employee @(employeeId.HasValue ? "updated" : "added") successfully!
+                    </div>
+                }
             </EditForm>
         </div>
     </div>
 </div>
 
 @code {
+    [Parameter]
+    public int? employeeId { get; set; }
+
     private Employee employee = new Employee();
+    private bool showSuccessMessage = false;
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (employeeId.HasValue)
+        {
+            employee = await employeeController.GetEmployeeById(employeeId.Value);
+        }
+    }
 
     private async Task HandleValidSubmit()
     {
         try
         {
-            await employeeController.AddEmployeeAsync(employee);
-            
-            employee = new Employee(); // Clear form
+            if (employeeId.HasValue)
+            {
+                await employeeController.UpdateEmployee(employee);
+            }
+            else
+            {
+                await employeeController.AddEmployee(employee);
+            }
+
+            showSuccessMessage = true;
+            errorMessage = string.Empty;
+            employee = new Employee();
+
+            // Call method to hide message after delay
+            _ = HideMessageAfterDelay();
         }
-        catch (Exception ex)
+        catch (InvalidOperationException ex)
         {
-            Console.WriteLine(ex.Message);
+            errorMessage = ex.Message;
+            showSuccessMessage = false;
+
+            _ = HideMessageAfterDelay();
         }
+    }
+
+    private async Task HideMessageAfterDelay()
+    {
+        await Task.Delay(10000);
+
+        // Reset messages
+        showSuccessMessage = false;
+        errorMessage = string.Empty;
+
+        StateHasChanged();
     }
 }

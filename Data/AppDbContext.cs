@@ -1,5 +1,5 @@
 ﻿
-using EmployeeSystem.Model;
+
 using EmployeeSystem.Model.EmployeeSystem.Model;
 using Microsoft.EntityFrameworkCore;
 

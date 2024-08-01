@@ -6,8 +6,10 @@ namespace EmployeeSystem.Model.EmployeeSystem.Model
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Position is required")]
         public string Position { get; set; }
 
         [Required(ErrorMessage = "Salary is required")]

@@ -14,11 +14,7 @@ namespace EmployeeSystem
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
-
-            // Register AppDbContext with scoped lifetime
             builder.Services.AddDbContext<AppDbContext>();
-
-            // Register EmployeeController with scoped lifetime
             builder.Services.AddScoped<EmployeeController>();
 
             var app = builder.Build();
