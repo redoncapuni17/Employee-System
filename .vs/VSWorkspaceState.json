@@ -1,12 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Components",
     "\\Components\\Layout",
     "\\Components\\Pages",
     "\\Controllers",
     "\\Data",
     "\\Model"
   ],
-  "SelectedNode": "\\Model\\Employee.cs",
+  "SelectedNode": "\\Components\\Pages\\Home.razor",
   "PreviewInSolutionExplorer": false
 }
