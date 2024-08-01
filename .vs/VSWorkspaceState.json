@@ -3,10 +3,12 @@
     "",
     "\\Components\\Layout",
     "\\Components\\Pages",
-    "\\Controllers",
     "\\Data",
-    "\\Model"
+    "\\Model",
+    "\\obj",
+    "\\obj\\Debug",
+    "\\obj\\Debug\\net8.0"
   ],
-  "SelectedNode": "\\Model\\Employee.cs",
+  "SelectedNode": "\\obj\\Debug\\net8.0\\EmployeeSystem.csproj.CoreCompileInputs.cache",
   "PreviewInSolutionExplorer": false
 }

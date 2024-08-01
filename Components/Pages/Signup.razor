@@ -1,0 +1,60 @@
+@page "/signup"
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+
+<EditForm Model="@userModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card p-4 shadow-lg" style="width: 20rem; margin-top: -10vh;">
+            <div class="text-center mb-3">
+                <i class="fa-solid fa-user-plus" style="font-size: 72px;"></i>
+                <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+            </div>
+
+            <div class="form-group">
+                <label for="inputUsername">Username</label>
+                <InputText id="inputUsername" class="form-control" @bind-Value="userModel.Username" />
+                <ValidationMessage For="@(() => userModel.Username)" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <InputText id="inputEmail" type="email" class="form-control" @bind-Value="userModel.Email" />
+                <ValidationMessage For="@(() => userModel.Email)" />
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <InputText id="inputPassword" type="password" class="form-control" @bind-Value="userModel.Password" />
+                <ValidationMessage For="@(() => userModel.Password)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block mt-3">Sign up</button>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    private UserModel userModel = new UserModel();
+
+    private void HandleValidSubmit()
+    {
+        // Handle signup logic here
+        Console.WriteLine($"Username: {userModel.Username}, Email: {userModel.Email}, Password: {userModel.Password}");
+    }
+
+    public class UserModel
+    {
+        [Required(ErrorMessage = "Username is required")]
+        public string Username { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Password is required")]
+        public string Password { get; set; } = string.Empty;
+    }
+}
