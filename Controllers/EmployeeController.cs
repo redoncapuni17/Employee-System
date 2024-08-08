@@ -16,12 +16,18 @@ namespace EmployeeSystem.Controllers
         
         public async Task<List<Employee>> GetEmployees()
         {
-            return await _dbContext.Employees.ToListAsync();
+            return await _dbContext.Employees.OrderByDescending(e=>e.Id).ToListAsync();
         }
-        public async Task<Employee> GetEmployeeById(int id)
+        public async Task<Employee?> GetEmployeeById(int id)
         {
             return await _dbContext.Employees.FirstOrDefaultAsync(e => e.Id == id);
         }
+
+        public async Task<List<Employee>> SearchEmployeesByName(string name)
+        {
+            return await _dbContext.Employees.Where(e=>e.Name.Contains(name)).ToListAsync();
+        }
+
         public async Task AddEmployee(Employee employee)
         {
             // Check if an employee with the same name already exists
@@ -38,6 +44,15 @@ namespace EmployeeSystem.Controllers
         {
             _dbContext.Employees.Update(employee);
             await _dbContext.SaveChangesAsync();
+        }
+        public async Task DeleteEmployee(int id)
+        {
+            var employee = await _dbContext.Employees.FirstOrDefaultAsync(x => x.Id == id);
+            if (employee != null) 
+            {
+                _dbContext.Employees.Remove(employee);
+                await _dbContext.SaveChangesAsync();
+            }
         }
     }
 }

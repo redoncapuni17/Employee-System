@@ -1,0 +1,50 @@
+﻿<div class="modal fade @(IsVisible ? "show" : "")" tabindex="-1" role="dialog" style="display: @(IsVisible ? "block" : "none");">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-shadow">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Confirm Delete</h5>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this employee?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="Hide">Cancel</button>
+                <button type="button" class="btn btn-danger" @onclick="ConfirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-shadow {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+</style>
+
+@code {
+    [Parameter] public EventCallback<int> OnConfirm { get; set; }
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public int EmployeeId { get; set; }
+    public bool IsVisible { get; private set; } = false;
+
+    public void Show(int employeeId)
+    {
+        EmployeeId = employeeId;
+        IsVisible = true;
+        StateHasChanged();
+    }
+
+    private async Task ConfirmDelete()
+    {
+        await OnConfirm.InvokeAsync(EmployeeId);
+        Hide();
+    }
+
+    private void Hide()
+    {
+        IsVisible = false;
+        OnCancel.InvokeAsync();
+        StateHasChanged();
+    }
+}

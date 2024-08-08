@@ -1,7 +1,7 @@
 using EmployeeSystem.Components;
 using EmployeeSystem.Controllers;
 using EmployeeSystem.Data;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace EmployeeSystem
 {

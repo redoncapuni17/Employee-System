@@ -270,3 +270,12 @@ C:\Users\NB\Desktop\EMS\Employee-System\obj\Debug\net8.0\refint\EmployeeSystem.d
 C:\Users\NB\Desktop\EMS\Employee-System\obj\Debug\net8.0\EmployeeSystem.pdb
 C:\Users\NB\Desktop\EMS\Employee-System\obj\Debug\net8.0\EmployeeSystem.genruntimeconfig.cache
 C:\Users\NB\Desktop\EMS\Employee-System\obj\Debug\net8.0\ref\EmployeeSystem.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Blazored.Modal.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Microsoft.JSInterop.dll
+C:\Users\redon\OneDrive\Desktop\EMS\EmployeeSystem\EmployeeSystem\bin\Debug\net8.0\Microsoft.JSInterop.WebAssembly.dll
